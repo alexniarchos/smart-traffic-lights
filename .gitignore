@@ -1,0 +1,7 @@
+# created by virtualenv automatically
+.idea/*
+bin/*
+lib/*
+.Python
+pyvenv.cfg
+sumo-integration.iml
