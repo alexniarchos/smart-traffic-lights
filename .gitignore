@@ -5,3 +5,4 @@ lib/*
 .Python
 pyvenv.cfg
 sumo-integration.iml
+.env

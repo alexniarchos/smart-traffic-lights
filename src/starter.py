@@ -1,25 +1,31 @@
 import os, sys, subprocess
-
-if 'SUMO_HOME' in os.environ:
-    tools = os.path.join(os.environ['SUMO_HOME'], 'tools')
-    sys.path.append(tools)
-    from sumolib import checkBinary
-else:
-    sys.exit("please declare environment variable 'SUMO_HOME'")
-
 import traci
 import numpy as np
+from dotenv import load_dotenv
+load_dotenv()
 
-sumoBinary = "/usr/bin/sumo-gui"
-sumoCmd = [sumoBinary, "-c", "./configs/2022-02-20-15-01-25/osm.sumocfg"]
+print(os.getenv("SUMO_BINARY"))
+print(os.getenv("SUMO_CONFIG"))
+sumoBinary = os.getenv("SUMO_BINARY")
+sumoCmd = [sumoBinary, "-c", os.getenv("SUMO_CONFIG")]
 
 traci.start(sumoCmd)
 step = 0
-print(traci.trafficlight.getIDList())
 while step < 1000:
-  print(step)
   traci.simulationStep()
-  traci.trafficlight.setRedYellowGreenState("cluster_1370816569_1372623099_1372623728_1372623894_2007178257", "GrGr")
+  idList = traci.trafficlight.getIDList()
+  allLanes = traci.lane.getIDList()
+  for id in idList:
+    links = traci.trafficlight.getControlledLinks(id)
+    lanes = traci.trafficlight.getControlledLanes(id)
+    # print("phase", phase, phaseDuration, redYellowGreenState, "endPhase")
+  # traci.trafficlight.setRedYellowGreenState("cluster_1370816569_1372623099_1372623728_1372623894_2007178257", "GrGr")
+  vehicles = traci.vehicle.getIDList()
+  vehiclesPos = []
+  vehicleDestination = []
+  for vehicle in vehicles:
+    vehiclesPos.append([vehicle, traci.vehicle.getLaneID(vehicle)])
+    vehicleDestination.append([vehicle, '{0:14b}'.format(traci.vehicle.getSignals(vehicle))])
   step += 1
 
 traci.close()
