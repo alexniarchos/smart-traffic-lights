@@ -78,18 +78,24 @@ def calculateVehicles(step):
 step = 0
 setupSumo()
 setupTrafficLights()
-while step < 3000:
+while step < 1000:
   calculateVehicles(step)
   traci.simulationStep()
   step += 1
 
 
-totalTime = 0
+allIntersectionTime = 0
+allIntersectionVehicles = 0
 for trafficLight in trafficLights:
+  totalTime = 0
   for vehicle in trafficLight.totalOutcomingVehicles:
-    totalTime += trafficLight.totalOutcomingVehicles[vehicle] - trafficLights[0].totalIncomingVehicles[vehicle]
+    totalTime += trafficLight.totalOutcomingVehicles[vehicle] - trafficLight.totalIncomingVehicles[vehicle]
   print("TrafficLight:", trafficLight.id)
   print("Average Time:", totalTime/len(trafficLight.totalOutcomingVehicles))
   print("Total Outcoming vehicles:", len(trafficLight.totalOutcomingVehicles))
   print("Total Incoming vehicles:", len(trafficLight.totalIncomingVehicles))
+  allIntersectionVehicles += len(trafficLight.totalOutcomingVehicles)
+  allIntersectionTime += totalTime
+
+print("All intersection time:", allIntersectionTime / allIntersectionVehicles)
 traci.close()
