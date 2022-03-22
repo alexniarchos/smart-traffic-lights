@@ -33,6 +33,7 @@ def setupTrafficLights():
       trafficLight.linksByPhaseId.append(resolveLinkIds(phase.state, links))
     trafficLights.append(trafficLight)
 
+
 def calculateNextLane(route, currentLane):
   currentRoad = currentLane.split('_')[0]
   for index, road in enumerate(route):
@@ -51,6 +52,7 @@ def calculatePreviousLane(route, currentLane):
         return -1
       else:
         return route[index - 1]
+
 
 def calculateVehicles(step):
   for trafficLight in trafficLights:
@@ -73,45 +75,11 @@ def calculateVehicles(step):
           if vehicle not in trafficLight.totalIncomingVehicles:
             trafficLight.totalIncomingVehicles[vehicle] = step
 
-
-def calculatePhasePressure():
-  for trafficLight in trafficLights:
-    trafficLight.pressureByPhaseId = []
-    for index, links in enumerate(trafficLight.linksByPhaseId):
-      totalIncoming = 0
-      totalOutgoing = 0
-      for link in links:
-        for x in trafficLight.links:
-          if x.linkId == link:
-            totalIncoming += x.numberOfIncomingCars
-            totalOutgoing += x.numberOfOutgoingCars
-      trafficLight.pressureByPhaseId.append(totalIncoming - totalOutgoing)
-
-
-def setNextPhase(step):
-  for trafficLight in trafficLights:
-    if step >= trafficLight.currentPhaseMinEnd:
-      maxPressureIndex = trafficLight.pressureByPhaseId.index(max(trafficLight.pressureByPhaseId))
-      currentPhase = traci.trafficlight.getPhase(trafficLight.id)
-      if currentPhase != maxPressureIndex:
-        if trafficLight.inBetweenPhase == False and traci.trafficlight.getPhase(trafficLight.id) % 2 == 0:
-          trafficLight.inBetweenPhaseEnd = step + traci.trafficlight.getAllProgramLogics(trafficLight.id)[0].phases[currentPhase + 1].minDur
-          trafficLight.inBetweenPhase = True
-          traci.trafficlight.setPhase(trafficLight.id, currentPhase + 1)
-        if trafficLight.inBetweenPhase == True and step >= trafficLight.inBetweenPhaseEnd:
-          traci.trafficlight.setPhase(trafficLight.id, maxPressureIndex)
-          trafficLight.currentPhaseMinEnd = step + traci.trafficlight.getAllProgramLogics(trafficLight.id)[0].phases[maxPressureIndex].minDur
-          trafficLight.inBetweenPhase = False
-      else:
-        traci.trafficlight.setPhase(trafficLight.id, currentPhase)
-
 step = 0
 setupSumo()
 setupTrafficLights()
 while step < 3000:
   calculateVehicles(step)
-  calculatePhasePressure()
-  setNextPhase(step)
   traci.simulationStep()
   step += 1
 
