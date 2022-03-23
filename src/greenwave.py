@@ -9,7 +9,7 @@ trafficLights = []
 def setupSumo():
   load_dotenv()
   sumoBinary = os.getenv("SUMO_BINARY")
-  sumoCmd = [sumoBinary, "-c", os.getenv("SUMO_CONFIG")]
+  sumoCmd = [sumoBinary, "-c", os.getenv("GREEN_SUMO_CONFIG")]
   traci.start(sumoCmd)
 
 
