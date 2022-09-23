@@ -2,7 +2,10 @@
 .idea/*
 bin/*
 lib/*
+lib64/*
 .Python
 pyvenv.cfg
 sumo-integration.iml
 .env
+src/__pycache__/*
+env/*
