@@ -1,0 +1,4 @@
+eclipse-sumo==1.14.1
+python-dotenv==0.21.0
+sumolib==1.14.1
+traci==1.14.1

@@ -5,13 +5,11 @@ from TrafficLightLink import TrafficLightLink
 from dotenv import load_dotenv
 trafficLights = []
 
-
 def setupSumo():
   load_dotenv()
   sumoBinary = os.getenv("SUMO_BINARY")
   sumoCmd = [sumoBinary, "-c", os.getenv("SUMO_CONFIG")]
   traci.start(sumoCmd)
-
 
 def resolveLinkIds(state, links):
   relatedLinks = []
@@ -19,7 +17,6 @@ def resolveLinkIds(state, links):
     if state[index] == 'G':
       relatedLinks.append(links[index][0][2])
   return relatedLinks
-
 
 def setupTrafficLights():
   idList = traci.trafficlight.getIDList()
@@ -41,7 +38,6 @@ def calculateNextLane(route, currentLane):
         return -1
       else:
         return route[index + 1]
-
 
 def calculatePreviousLane(route, currentLane):
   currentRoad = currentLane.split('_')[0]
