@@ -1,6 +1,0 @@
-<configuration>
-<input>
-<net-file value="green-wave.net.xml"/>
-<route-files value="trips.trips.xml"/>
-</input>
-</configuration>

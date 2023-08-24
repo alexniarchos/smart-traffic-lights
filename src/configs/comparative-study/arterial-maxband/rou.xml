@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2023-05-11 09:47:11 by Eclipse SUMO duarouter Version 1.14.1
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/duarouterConfiguration.xsd">
+
+    <input>
+        <net-file value="net.xml"/>
+        <route-files value="trips.xml"/>
+    </input>
+
+    <output>
+        <output-file value="rou.xml"/>
+    </output>
+
+    <processing>
+        <remove-loops value="true"/>
+    </processing>
+
+    <report>
+        <ignore-errors value="true"/>
+    </report>
+
+</configuration>
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <route id="route0" edges="E0 E1 E2" />
+    <flow id="flow0" type="DEFAULT_VEHTYPE" route="route0" begin="1" end="5000" number="5000" departLane="free" />
+    <route id="route1" edges="E0 -E3" />
+    <flow id="flow1" type="DEFAULT_VEHTYPE" route="route1" begin="1" end="5000" number="400" />
+    <route id="route2" edges="E0 E4" />
+    <flow id="flow2" type="DEFAULT_VEHTYPE" route="route2" begin="1" end="5000" number="400" />
+    <route id="route3" edges="E0 E1 -E5" />
+    <flow id="flow3" type="DEFAULT_VEHTYPE" route="route3" begin="1" end="5000" number="400" />
+    <route id="route4" edges="E0 E1 E6" />
+    <flow id="flow4" type="DEFAULT_VEHTYPE" route="route4" begin="1" end="5000" number="400" />
+
+    <route id="route5" edges="E3 E4" />
+    <flow id="flow5" type="DEFAULT_VEHTYPE" route="route5" begin="1" end="5000" number="100" />
+    <route id="route12" edges="-E4 -E3" />
+    <flow id="flow12" type="DEFAULT_VEHTYPE" route="route12" begin="1" end="5000" number="100" />
+    <route id="route6" edges="E3 E1 E2" />
+    <flow id="flow6" type="DEFAULT_VEHTYPE" route="route6" begin="1" end="5000" number="600" />
+    <route id="route7" edges="-E4 E1 E2" />
+    <flow id="flow7" type="DEFAULT_VEHTYPE" route="route7" begin="1" end="5000" number="600" />
+
+    <route id="route8" edges="E5 E6" />
+    <flow id="flow8" type="DEFAULT_VEHTYPE" route="route8" begin="1" end="5000" number="100" />
+    <route id="route11" edges="-E6 -E5" />
+    <flow id="flow11" type="DEFAULT_VEHTYPE" route="route11" begin="1" end="5000" number="100" />
+    <route id="route9" edges="E5 E2" />
+    <flow id="flow9" type="DEFAULT_VEHTYPE" route="route9" begin="1" end="5000" number="600" />
+    <route id="route10" edges="-E6 E2" />
+    <flow id="flow10" type="DEFAULT_VEHTYPE" route="route10" begin="1" end="5000" number="600" />
+</routes>

@@ -9,3 +9,4 @@ sumo-integration.iml
 .env
 src/__pycache__/*
 env/*
+src/models/*

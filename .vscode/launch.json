@@ -1,0 +1,41 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Current simulation",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "args": ["--scenario", "single-intersection", "--gui"]
+    },
+    {
+      "name": "Maxpressure",
+      "type": "python",
+      "request": "launch",
+      "program": "./src/maxpressure.py",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "Webster",
+      "type": "python",
+      "request": "launch",
+      "program": "./src/webster.py",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "DQN",
+      "type": "python",
+      "request": "launch",
+      "program": "./src/dqn_train.py",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    }
+  ]
+}

@@ -1,4 +1,8 @@
-eclipse-sumo==1.14.1
+numpy==1.24.2
 python-dotenv==0.21.0
-sumolib==1.14.1
-traci==1.14.1
+tensorflow==2.10
+sumolib==1.16.0
+eclipse-sumo==1.16.0
+traci==1.16.0
+pydot==1.4.2
+matplotlib==3.7.1
