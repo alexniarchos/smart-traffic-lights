@@ -1,7 +1,4 @@
-# smart-traffic-lights
-This project aims to improve the traffic flow of various real-world  simulated scenarios
-Smart traffic lights using SUMO simulator
-
+# smart-traffic-lights 🚦
 
 ## Install Python
 ```
